@@ -1,0 +1,114 @@
+@import url('https://fonts.cdnfonts.com/css/ica-rubrik-black');
+@import url('https://fonts.cdnfonts.com/css/poppins');
+
+.container {
+    width: 100%;
+    height: 150vh;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    background-image: url(bg.png);
+    background-position: center;
+    background-origin: content-box;
+    background-repeat: no-repeat;
+    background-size: 93%;
+}
+
+.container .slider {
+    position: absolute;
+    /* width: 200px;
+    height: 250px; */
+    width: 180px;
+    height: 220px;
+    top: 8%;
+    left: calc(50% - 100px);
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    animation: autoRun 20s linear infinite;
+    z-index: 2;
+}
+
+@keyframes autoRun {
+    from {
+        transform: perspective(1000px) rotateX(-15deg) rotateY(0deg);
+    }
+
+    to {
+        transform: perspective(1000px) rotateX(-15deg) rotateY(360deg);
+    }
+
+}
+
+.container .slider .item {
+    position: absolute;
+    inset: 0 0 0 0;
+    transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity))* 1deg)) translateZ(550px);
+    transition: transform 1s;
+}
+
+.container .slider .item img {
+    width: 100%;
+    height: 105%;
+    object-fit: cover;
+}
+
+.content {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1400px, 110vw);
+    height: max-content;
+    padding-bottom: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: center;
+    z-index: 1;
+    /* margin-top: 32%; */
+}
+
+.content h1 {
+    font-family: 'ICA Rubrik';
+    font-size: 14em;
+    line-height: 1em;
+    color: #25283B;
+    position: relative;
+    margin-bottom: -3%;
+    margin-left: 3%;
+}
+
+.content h1::after {
+    position: absolute;
+    inset: 0 0 0 0;
+    content: attr(data-content);
+    z-index: 2;
+    -webkit-text-stroke: 2px #d2d2d2;
+    color: transparent;
+}
+
+.content .author {
+    font-family: Poppins;
+    margin-top: 11%;
+    align-items: left;
+    max-width: 200px;
+
+}
+
+.content h2 {
+    font-size: 3em;
+    /* position: absolute; */
+}
+
+.content .model {
+    background-image: url(model.png);
+    width: 100%;
+    height: 120vh;
+    bottom: 0;
+    left: 0;
+    background-repeat: no-repeat;
+    background-size: auto 130%;
+    background-position: top center;
+    position: absolute;
+    z-index: 1;
+}
